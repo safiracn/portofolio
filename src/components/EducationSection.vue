@@ -1,4 +1,6 @@
 <script setup>
+import { ref } from 'vue'
+
 const education = [
   {
     school: 'Universitas Pembangunan Nasional "Veteran" Jawa Timur',
@@ -6,7 +8,11 @@ const education = [
     meta: 'GPA 3.87 / 4.00',
     location: 'Surabaya, Indonesia',
     period: 'August 2024 — Present',
-    current: true
+    current: true,
+    // Taruh file logo di folder "public/images/upn.png" pada project Vite-mu,
+    // baru path "/images/upn.png" ini akan berhasil dimuat
+    logo: '/images/upn.png',
+    initials: 'UPN'
   },
   {
     school: 'SMAN 1 Wonoayu',
@@ -14,9 +20,20 @@ const education = [
     meta: null,
     location: 'Sidoarjo, Indonesia',
     period: 'June 2021 — June 2024',
-    current: false
+    current: false,
+    // Sama, taruh di "public/images/smanwonoayu.png"
+    logo: '/images/smaniwa.png',
+    initials: 'SMA'
   }
 ]
+
+// Menyimpan status error tiap logo, supaya kalau link gambar gagal load
+// otomatis fallback ke inisial (bukan gambar rusak / broken icon)
+const logoError = ref(education.map(() => false))
+
+function handleLogoError(i) {
+  logoError.value[i] = true
+}
 </script>
 
 <template>
@@ -38,15 +55,33 @@ const education = [
           </div>
 
           <div class="timeline-card">
-            <div class="card-top">
-              <span class="period">{{ item.period }}</span>
-              <span v-if="item.current" class="badge-current">Ongoing</span>
+            <!-- Panggung logo di sisi kanan: glow lembut + logo besar -->
+            <div class="logo-stage" aria-hidden="true">
+              <div class="logo-glow" :class="{ current: item.current }"></div>
+              <div class="logo-frame">
+                <img
+                  v-if="item.logo && !logoError[i]"
+                  :src="item.logo"
+                  :alt="item.school + ' logo'"
+                  class="logo-img"
+                  @error="handleLogoError(i)"
+                />
+                <span v-else class="logo-fallback">{{ item.initials }}</span>
+              </div>
             </div>
-            <h3 class="school">{{ item.school }}</h3>
-            <p class="degree">{{ item.degree }}</p>
-            <div class="card-meta">
-              <span v-if="item.meta" class="meta-pill">{{ item.meta }}</span>
-              <span class="meta-location">{{ item.location }}</span>
+
+            <div class="card-content">
+              <div class="card-top">
+                <span class="period">{{ item.period }}</span>
+                <span v-if="item.current" class="badge-current">Ongoing</span>
+              </div>
+              <h3 class="school">{{ item.school }}</h3>
+              <p class="degree">{{ item.degree }}</p>
+
+              <div class="card-meta">
+                <span v-if="item.meta" class="meta-pill">{{ item.meta }}</span>
+                <span class="meta-location">{{ item.location }}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -105,23 +140,117 @@ const education = [
 }
 
 .timeline-card {
+  position: relative;
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 26px 30px;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  overflow: hidden;
+  min-height: 168px;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .timeline-card:hover {
   transform: translateX(4px);
   border-color: var(--border-strong);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+}
+
+.timeline-card:hover .logo-img {
+  transform: scale(1.06);
+  filter: grayscale(0.1) opacity(1) drop-shadow(0 14px 26px rgba(0, 0, 0, 0.4));
+}
+
+.timeline-card:hover .logo-glow {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+/* --- Panggung logo besar di kanan --- */
+.logo-stage {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.logo-glow {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(76, 126, 255, 0.22), transparent 72%);
+  filter: blur(4px);
+  opacity: 0.85;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.logo-glow.current {
+  background: radial-gradient(circle, rgba(76, 126, 255, 0.38), transparent 72%);
+}
+
+.logo-frame {
+  position: relative;
+  width: 152px;
+  height: 152px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  /* Sentuhan monokrom lembut, tapi detail logo tetap terlihat jelas.
+     Hapus baris filter ini kalau ingin logo full warna asli. */
+  filter: grayscale(0.35) opacity(0.92) drop-shadow(0 10px 22px rgba(0, 0, 0, 0.35));
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.logo-fallback {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--blue-accent-soft);
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0.9;
+}
+
+/* Fade halus di tepi kanan supaya logo menyatu rapi dengan tepi kartu */
+.timeline-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 90px;
+  background: linear-gradient(90deg, transparent, var(--bg-surface) 92%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card-content {
+  position: relative;
+  z-index: 1;
+  max-width: 66%;
 }
 
 .card-top {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
 }
 
 .period {
@@ -145,7 +274,7 @@ const education = [
 .school {
   font-size: 1.15rem;
   font-weight: 600;
-  margin-bottom: 6px;
+  line-height: 1.3;
 }
 
 .degree {
@@ -184,6 +313,13 @@ const education = [
   }
   .timeline-card {
     padding: 20px 22px;
+    min-height: unset;
+  }
+  .logo-stage {
+    display: none;
+  }
+  .card-content {
+    max-width: 100%;
   }
 }
 </style>

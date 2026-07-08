@@ -1,4 +1,5 @@
 <script setup>
+import AppIcon from './AppIcon.vue'
 function scrollTo(id) {
   const el = document.getElementById(id)
   if (el) el.scrollIntoView({ behavior: 'smooth' })
@@ -23,17 +24,19 @@ function scrollTo(id) {
 
       <div class="hero-actions">
         <!-- NOTE: replace the href below with the actual path to your CV file -->
-        <a class="btn btn-primary" href="/cv/cv.pdf" download>
-          Download CV
-        </a>
-        <a class="btn btn-ghost" href="#about" @click.prevent="scrollTo('about')">
-          About Me
-        </a>
+      <a class="btn btn-primary" href="/cv/cv.pdf" download>
+        <AppIcon name="download" :size="18" />
+        Download CV
+      </a>
+      <a class="btn btn-ghost" href="#about" @click.prevent="scrollTo('about')">
+        <AppIcon name="users" :size="18" />
+        About Me
+      </a>
       </div>
 
       <div class="hero-stats">
         <a class="stat-card" href="#projects" @click.prevent="scrollTo('projects')">
-          <span class="stat-number">10+</span>
+          <span class="stat-number">10</span>
           <span class="stat-label">Projects Built</span>
         </a>
         <a class="stat-card" href="#organization" @click.prevent="scrollTo('organization')">
@@ -143,6 +146,9 @@ function scrollTo(id) {
 }
 
 .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   padding: 13px 28px;
   border-radius: 999px;
   font-size: 0.92rem;

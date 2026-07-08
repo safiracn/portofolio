@@ -11,23 +11,24 @@ const projects = [
     ]
   },
   {
-    title: 'MONY - Savings & Loan Cooperative App',
-    description:
-      'Developed a mobile application for a pawn-based savings and loan cooperative, enabling members to access financial services and administrators to manage cooperative operations through a structured MVVM architecture.',
-    tools: ['Mobile App', 'Flutter', 'MVVM'],
-    image: null,
-    links: [
-      { label: 'GitHub', href: 'https://github.com/patrichmoratti/aplikasi-ksp-layanan-gadai.git' }
-    ]
-  },
-  {
     title: 'MONY - UI/UX Design',
     description:
       'Created UI/UX designs for a pawn-based savings and loan cooperative application, focusing on intuitive workflows for both members and administrators.',
     tools: ['Figma'],
-    image: null,
+    image: '/images/monyuiux.png',
     links: [
       { label: 'Figma', href: 'https://www.figma.com/design/iRhuO0qTkJZssR2fLd7Sut/PEMMOB?node-id=1018-263&t=DfcPkgTPqBAhr0uI-1' }
+    ]
+  },
+  {
+    title: 'MONY - Savings & Loan Cooperative App',
+    description:
+      'Developed a mobile application for a pawn-based savings and loan cooperative, enabling members to access financial services and administrators to manage cooperative operations through a structured MVVM architecture.',
+    tools: ['Mobile App', 'Flutter', 'MVVM'],
+    image: '/images/monymobile.png',
+    links: [
+      { label: 'View', href: 'https://www.mediafire.com/file/us26zx00zfbop3d/app-release.apk/file' },
+      { label: 'GitHub', href: 'https://github.com/safiracn/MONY-APLIKASISIMPANPINJAMBERBASISGADAI.git' }
     ]
   },
   {
@@ -35,9 +36,9 @@ const projects = [
     description:
       'Conducted descriptive and inferential statistical analysis using Jamovi, testing 5 methods including regression, chi-square, t-test, ANOVA, and Mann-Whitney U, then applying SEM-PLS via WarpPLS, finding a significant positive effect of cloud service usage on student academic effectiveness (path coefficient 0.534, p < 0.001, R-squared 0.29).',
     tools: ['Jamovi', 'WarpPLS'],
-    image: null,
+    image: '/images/statkom.png',
     links: [
-      { label: 'Drive', href: 'https://drive.google.com/file/d/1hlx-LT9E8BRIjxeDl8fSRRjFNzx2WDJv/view?usp=sharing' }
+      { label: 'Report', href: 'https://drive.google.com/file/d/1hlx-LT9E8BRIjxeDl8fSRRjFNzx2WDJv/view?usp=sharing' }
     ]
   },
   {
@@ -45,20 +46,9 @@ const projects = [
     description:
       'Designed a job marketplace platform connecting job seekers and opportunity providers in part-time, freelance, and volunteer categories through a user-friendly and accessible interface.',
     tools: ['Figma'],
-    image: null,
+    image: '/images/lowong.png',
     links: [
       { label: 'Figma', href: 'https://www.figma.com/design/XEgMmO4qARv9hECYTRGb5V/E-BUSINESS?node-id=1237-4905&t=9zxwbYUEXq30n4sD-1' }
-    ]
-  },
-  {
-    title: 'Lingora - Gamified Sign Language Learning App',
-    description:
-      'Designed an AI-powered, gamified sign language learning application for Samsung Solve for Tomorrow 2026. The platform leverages gesture recognition technology to provide real-time feedback, structured learning paths, and interactive challenges, supporting inclusive communication through accessible BISINDO and SIBI learning experiences.',
-    tools: ['Design Thinking', 'UI/UX Design'],
-    image: null,
-    links: [
-      { label: 'Figma', href: 'https://www.figma.com/design/7RDXzBiiOwW3EM9WPHJjha/SFT-TIM-RAJAWALI?node-id=0-1&t=GZ5L0F2uecI6Cp4I-1' },
-      { label: 'Laporan', href: 'https://drive.google.com/file/d/1mDK18Z1l-GGuRiU7XLP_BbxdRmuEYL1u/view?usp=sharing' }
     ]
   },
   {
@@ -66,9 +56,50 @@ const projects = [
     description:
       'Designed a user-centered interface and user experience for a community business empowerment platform aimed at improving accessibility and usability for small business owners.',
     tools: ['Figma'],
-    image: null,
+    image: '/images/lunara.png',
     links: [
       { label: 'Figma', href: 'https://www.figma.com/design/SzKMPkJSzmgusf1rWK851N/UI-UX-Lunara_Localscape?node-id=0-1&t=XERhwXfMDUj7WYRU-1' }
+    ]
+  },
+  {
+    title: 'Lingora - Gamified Sign Language Learning App',
+    description:
+      'Designed an AI-powered, gamified sign language learning application for Samsung Solve for Tomorrow 2026. The platform leverages gesture recognition technology to provide real-time feedback, structured learning paths, and interactive challenges, supporting inclusive communication through accessible BISINDO and SIBI learning experiences.',
+    tools: ['Design Thinking', 'UI/UX Design'],
+    image: '/images/lingora.png',
+    links: [
+      { label: 'Figma', href: 'https://www.figma.com/design/7RDXzBiiOwW3EM9WPHJjha/SFT-TIM-RAJAWALI?node-id=0-1&t=GZ5L0F2uecI6Cp4I-1' },
+      { label: 'Report', href: 'https://drive.google.com/file/d/1mDK18Z1l-GGuRiU7XLP_BbxdRmuEYL1u/view?usp=sharing' }
+    ]
+  },
+  {
+    title: 'IT Performance Measurement Dashboard - Wowrack Case Study',
+    description:
+      'Developed an interactive web-based KPI dashboard for measuring IT performance using Wowrack as the case study. The dashboard applies the IT Balanced Scorecard (IT BSC) framework to visualize key performance indicators across Corporate Contribution, Customer Orientation, Operational Excellence, and Future Orientation, supporting performance monitoring and strategic decision-making.',
+    tools: ['Website'],
+    image: '/images/pkti.jpeg',
+   links: [
+      { label: 'Web', href: 'https://v0-dashboard-deployment-chi.vercel.app/' }
+    ]
+  },
+  {
+    title: 'Information System Project Planning – Ruang Karya MAN 1 Gresik',
+    description:
+      'Developed a comprehensive project management plan for the Ruang Karya MAN 1 Gresik e-commerce website. The project included project charter development, scope definition, work breakdown structure (WBS), scheduling, budgeting, risk management, resource planning, and Agile Scrum sprint planning to ensure effective project execution from initiation to deployment.',
+    tools: ['Agile Scrum', 'Notion', 'Gantt Chart', 'Project Charter', 'Work Breakdown Structure (WBS)'],
+    image: '/images/mpsi.png',
+    links: [
+      { label: 'Report', href: 'https://drive.google.com/file/d/1M0C4SWCxx9QmkhuqT84jNC1Tb4R1xyPn/view?usp=sharing' }
+    ]
+  },
+  {
+    title: 'Cinema Ticket Booking App',
+    description:
+      'Developed a desktop-based cinema ticket booking application that enables users to browse movie schedules, select seats, and manage ticket reservations.',
+    tools: ['Java', 'MySQL'],
+    image: '/images/basdat.png',
+    links: [
+      { label: 'GitHub', href: 'https://github.com/safiracn/Project-Basis-Data-Kel-2-II-B.git' }
     ]
   },
   {
@@ -76,25 +107,9 @@ const projects = [
     description:
       'Developed a desktop-based cashier application for an MSME to manage sales transactions, order processing, and payment recording efficiently.',
     tools: ['Desktop App', 'Visual Basic .NET'],
-    image: null,
+    image: '/images/noona.png',
     links: []
   },
-  {
-    title: 'Cinema Ticket Booking App',
-    description:
-      'Developed a desktop-based cinema ticket booking application that enables users to browse movie schedules, select seats, and manage ticket reservations.',
-    tools: ['Java', 'MySQL'],
-    image: null,
-    links: []
-  },
-  {
-    title: 'UPN Veteran Jawa Timur Canteen Ordering Application',
-    description:
-      'Developed a desktop-based food ordering application for the university canteen, supporting menu browsing, order placement, and transaction management.',
-    tools: ['Java'],
-    image: null,
-    links: []
-  }
 ]
 </script>
 

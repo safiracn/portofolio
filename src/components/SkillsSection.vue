@@ -1,4 +1,5 @@
 <script setup>
+import AppIcon from './AppIcon.vue'
 const softSkills = [
   'Public Speaking',
   'Communication',
@@ -9,18 +10,18 @@ const softSkills = [
 ]
 
 const hardSkills = [
-  'Java',
-  'Visual Basic',
-  'SQL',
-  'HTML',
-  'CSS',
-  'JavaScript',
-  'Jamovi',
-  'Microsoft Office',
-  'Git',
-  'GitHub',
-  'Visual Studio Code',
-  'Figma'
+  { label: 'Java', brand: 'java' },
+  { label: 'Visual Basic', brand: 'visualbasic' },
+  { label: 'SQL', brand: 'mysql' },
+  { label: 'HTML', brand: 'html5' },
+  { label: 'CSS', brand: 'css3' },
+  { label: 'JavaScript', brand: 'javascript' },
+  { label: 'Jamovi', custom: '/images/Jamovi.png' },
+  { label: 'Microsoft Office', custom: '/images/microsoft.png' },
+  { label: 'Git', brand: 'git' },
+  { label: 'GitHub', brand: 'github' },
+  { label: 'Visual Studio Code', brand: 'vscode' },
+  { label: 'Figma', brand: 'figma' }
 ]
 
 const languages = [
@@ -44,8 +45,13 @@ const languages = [
 
       <div class="skill-group">
         <h3 class="group-title">Hard Skills</h3>
-        <div class="tag-cloud">
-          <span v-for="s in hardSkills" :key="s" class="tag tag-accent">{{ s }}</span>
+        <div class="skill-grid">
+        <div v-for="s in hardSkills" :key="s.label" class="skill-tile">
+          <img v-if="s.custom" :src="s.custom" alt="" class="skill-custom-img" />
+          <AppIcon v-else-if="s.brand" :brand="s.brand" :size="44" />
+          <AppIcon v-else :name="s.generic" :size="30" />
+          <span class="skill-name">{{ s.label }}</span>
+        </div>
         </div>
       </div>
 
@@ -65,6 +71,12 @@ const languages = [
 <style scoped>
 .skill-group {
   margin-bottom: 40px;
+}
+
+.skill-custom-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
 }
 
 .skill-group:last-child {
@@ -110,6 +122,37 @@ const languages = [
 
 .tag-accent:hover {
   border-color: var(--blue-accent);
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 18px;
+}
+
+.skill-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 10px;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.skill-tile:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+}
+
+.skill-name {
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.3;
 }
 
 .lang-row {

@@ -3,90 +3,42 @@ import { ref } from 'vue'
 
 const activeTab = ref('organisasi')
 
-// Tiap item bisa diisi array `images` (path foto kegiatan/sertifikat).
-// Kosongkan array-nya (default) kalau belum ada fotonya -> otomatis jadi placeholder.
+// Isi `images` dengan path foto (string), taruh file-nya di public/images/
+// Kosongkan jadi null kalau belum ada -> otomatis jadi placeholder rapi
 const organisasi = [
   {
     name: 'Information System Community (ISCOM)',
     role: 'Secretary 2',
-    images: []
+    images: '/images/iscom.jpeg'
   },
   {
     name: 'Veteran Robotic (VETRO)',
     role: 'Member',
-    images: []
+    images: '/images/vetro.jpeg'
   },
   {
     name: 'HIMASIFO UPN "Veteran" Jawa Timur',
     role: 'Staff of Advocacy & Student Welfare Department',
-    images: []
+    images: '/images/hima.jpeg'
   }
 ]
 
 const kepanitiaan = [
-  { name: 'Aksi Belajar Program', role: 'Teaching Staff', images: [] },
-  {
-    name: 'GRADASI (Gabungan Rangkaian Pengkaderan Sistem Informasi) 2025',
-    role: 'Event Division Member & Master of Ceremony, Pekan Serasi / Puncak Pengkaderan Sistem Informasi (PENSI) Day 1',
-    images: []
-  },
-  {
-    name: 'SICERIA (Sistem Informasi Cerdas dan Peduli Anak) 2025',
-    role: 'Head of Event Division',
-    images: []
-  },
-  {
-    name: 'Forbasi (Forum Mahasiswa Baru Sistem Informasi) 2025',
-    role: 'Presenter',
-    images: []
-  },
-  {
-    name: 'SITASI (Seminar Nasional dan Teknologi Sistem Informasi) Bela Negara 2025',
-    role: 'Event Division Member',
-    images: []
-  },
-  {
-    name: 'Open Talk of the Information Systems Department and the Faculty of Computer Science',
-    role: 'Moderator & Event Division Member',
-    images: []
-  },
-  {
-    name: 'Information Systems Dies Natalis 2025',
-    role: 'Event Division Member',
-    images: []
-  },
-  {
-    name: 'Islamic Education Final Project',
-    role: 'Project Leader & Presenter',
-    images: []
-  },
-  {
-    name: 'Sosialisasi Informasi dan Arahan Persiapan Skripsi (SIAPS) 2025',
-    role: 'Moderator & Master of Ceremony',
-    images: []
-  },
-  { name: 'Blood Donation Program', role: 'Event Division Member', images: [] },
-  {
-    name: 'Ramadhan Berbagi Bersama Sistem Informasi (RADIASI)',
-    role: 'Head of Event Division',
-    images: []
-  },
-  {
-    name: 'Information Systems Department Student Election (PEMIRA)',
-    role: 'Public Relations Member',
-    images: []
-  },
-  {
-    name: 'Aktif Berkarya Bersama Hima (AKSA) 2025',
-    role: 'Master of Ceremony',
-    images: []
-  },
-  {
-    name: 'ISMURF (Information System Make Unity Relationship Forever)',
-    role: 'Fundraising Division Member',
-    images: []
-  },
-  { name: 'Choir — SMAN 1 Wonoayu', role: 'Member', images: [] }
+  { name: 'Aksi Belajar Program', role: 'Teaching Staff', images: '/images/aksibelajar.jpeg' },
+  { name: 'GRADASI (Gabungan Rangkaian Pengkaderan Sistem Informasi) 2025', role: 'Event Division Member & Master of Ceremony, Pekan Serasi / Puncak Pengkaderan Sistem Informasi (PENSI) Day 1', images: '/images/gradasi.jpeg' },
+  { name: 'SICERIA (Sistem Informasi Cerdas dan Peduli Anak) 2025', role: 'Head of Event Division', images: '/images/siceria.jpeg' },
+  { name: 'Forbasi (Forum Mahasiswa Baru Sistem Informasi) 2025', role: 'Presenter', images: '/images/forbasi.jpeg' },
+  { name: 'SITASI (Seminar Nasional dan Teknologi Sistem Informasi) Bela Negara 2025', role: 'Event Division Member', images: '/images/sitasi.jpeg' },
+  { name: 'Open Talk of the Information Systems Department and the Faculty of Computer Science', role: 'Moderator & Event Division Member', images: '/images/opentalk.jpeg' },
+  { name: 'Information Systems Dies Natalis 2025', role: 'Event Division Member', images: '/images/disnat.jpeg' },
+  { name: 'Islamic Education Final Project', role: 'Project Leader & Presenter', images: '/images/agama.jpeg' },
+  { name: 'Sosialisasi Informasi dan Arahan Persiapan Skripsi (SIAPS) 2025', role: 'Moderator & Master of Ceremony', images: '/images/siaps.jpeg' },
+  { name: 'Blood Donation Program', role: 'Event Division Member', images: '/images/dondar.jpeg' },
+  { name: 'Ramadhan Berbagi Bersama Sistem Informasi (RADIASI)', role: 'Head of Event Division', images: '/images/radiasi.jpeg' },
+  { name: 'Information Systems Department Student Election (PEMIRA)', role: 'Public Relations Member', images: '/images/pemira.jpeg' },
+  { name: 'Aktif Berkarya Bersama Hima (AKSA) 2025', role: 'Master of Ceremony', images: '/images/aksa.jpeg' },
+  { name: 'ISMURF (Information System Make Unity Relationship Forever)', role: 'Fundraising Division Member', images: '/images/ismurf.jpeg' },
+  { name: 'Choir — SMAN 1 Wonoayu', role: 'Member', images: '/images/padus.jpeg' }
 ]
 </script>
 
@@ -97,36 +49,19 @@ const kepanitiaan = [
       <h2 class="section-title">Beyond the classroom</h2>
 
       <div class="tab-switch">
-        <button
-          class="tab-btn"
-          :class="{ active: activeTab === 'organisasi' }"
-          @click="activeTab = 'organisasi'"
-        >
+        <button class="tab-btn" :class="{ active: activeTab === 'organisasi' }" @click="activeTab = 'organisasi'">
           Organization
         </button>
-        <button
-          class="tab-btn"
-          :class="{ active: activeTab === 'kepanitiaan' }"
-          @click="activeTab = 'kepanitiaan'"
-        >
+        <button class="tab-btn" :class="{ active: activeTab === 'kepanitiaan' }" @click="activeTab = 'kepanitiaan'">
           Committee
         </button>
       </div>
 
       <div v-show="activeTab === 'organisasi'" class="card-grid">
         <article v-for="o in organisasi" :key="o.name" class="oc-card">
-          <div class="photo-strip">
-            <template v-if="o.images.length">
-              <img
-                v-for="(img, idx) in o.images.slice(0, 3)"
-                :key="idx"
-                :src="img"
-                :alt="o.name"
-              />
-            </template>
-            <div v-else class="photo-placeholder">
-              <span>Photos / Certificate</span>
-            </div>
+          <div class="photo-frame">
+            <img v-if="o.images" :src="o.images" :alt="o.name" />
+            <div v-else class="photo-placeholder"><span>Photo</span></div>
           </div>
           <h3 class="oc-name">{{ o.name }}</h3>
           <p class="oc-role">{{ o.role }}</p>
@@ -135,18 +70,9 @@ const kepanitiaan = [
 
       <div v-show="activeTab === 'kepanitiaan'" class="card-grid">
         <article v-for="c in kepanitiaan" :key="c.name" class="oc-card">
-          <div class="photo-strip">
-            <template v-if="c.images.length">
-              <img
-                v-for="(img, idx) in c.images.slice(0, 3)"
-                :key="idx"
-                :src="img"
-                :alt="c.name"
-              />
-            </template>
-            <div v-else class="photo-placeholder">
-              <span>Photos / Certificate</span>
-            </div>
+          <div class="photo-frame">
+            <img v-if="c.images" :src="c.images" :alt="c.name" />
+            <div v-else class="photo-placeholder"><span>Photo</span></div>
           </div>
           <h3 class="oc-name">{{ c.name }}</h3>
           <p class="oc-role">{{ c.role }}</p>
@@ -206,22 +132,21 @@ const kepanitiaan = [
   border-color: var(--border-strong);
 }
 
-.photo-strip {
-  display: flex;
-  gap: 2px;
-  height: 120px;
+.photo-frame {
+  width: 100%;
+  aspect-ratio: 16 / 10;
   background: var(--bg-elevated);
 }
 
-.photo-strip img {
-  flex: 1;
+.photo-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
 .photo-placeholder {
-  flex: 1;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -231,8 +156,6 @@ const kepanitiaan = [
 .photo-placeholder span {
   font-size: 0.74rem;
   color: var(--text-muted);
-  text-align: center;
-  padding: 0 12px;
 }
 
 .oc-name {

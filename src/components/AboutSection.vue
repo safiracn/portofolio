@@ -1,8 +1,9 @@
 <script setup>
+import AppIcon from './AppIcon.vue'
 const socials = [
-  { label: 'Instagram', href: 'https://www.instagram.com/safiracn_' },
-  { label: 'GitHub', href: 'https://github.com/safiracn' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/safiracn' }
+  { brand: 'instagram', label: 'Instagram', href: 'https://www.instagram.com/safiracn_', image: '/images/ig.webp' },
+  { brand: 'github', label: 'GitHub', href: 'https://github.com/safiracn' },
+  { brand: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/safiracn' }
 ]
 </script>
 
@@ -14,29 +15,34 @@ const socials = [
         <h2 class="section-title">A little about me</h2>
 
         <p class="about-desc">
-          Information Systems undergraduate at UPN "Veteran" East Java with a solid
-          foundation in database systems, application development, and data-driven
-          problem solving. Experienced in SQL, cross-platform programming, and
-          business process analysis, I am eager to contribute as a data analyst or
-          fullstack developer intern. Proactive, detail-oriented, and adaptable, I am
-          ready to translate data into clear insights, build functional applications,
-          and deliver measurable impact through strong technical execution and
-          teamwork.
+          Undergraduate Information System Student, Faculty of Computer Science, with a genuine passion for data analytics and fullstack development, backed by a solid foundation in database systems, application development, and business process analysis built through hands on projects and real world problem solving. I actively seek new challenges rather than waiting for them to come, adapting quickly to unfamiliar tools, technologies, and team environments, and approaching every unfamiliar dataset or situation with curiosity and a strong willingness to learn. Actively involved in campus organizations and committees, I have sharpened my communication, teamwork, and problem solving abilities alongside my technical skills, and I believe real impact comes from combining strong execution with openness to feedback and continuous growth. For me, every project and every new environment is an opportunity to turn data into clear insights, build functional and reliable applications, and deliver measurable impact.
         </p>
 
-        <div class="socials">
-          <a
-            v-for="s in socials"
-            :key="s.label"
-            class="social-pill"
-            :href="s.href"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {{ s.label }}
-          </a>
-        </div>
+      <div class="socials">
+        <a
+          v-for="s in socials"
+          :key="s.label"
+          class="social-icon"
+          :href="s.href"
+          target="_blank"
+          rel="noopener noreferrer"
+          :aria-label="s.label"
+        >
+          <img
+            v-if="s.image"
+            :src="s.image"
+            :alt="s.label"
+            class="social-img"
+          />
+
+          <AppIcon
+            v-else
+            :brand="s.brand"
+            :size="42"
+          />
+        </a>
       </div>
+  </div>
 
       <div class="about-photo-wrap">
         <div class="photo-decor" aria-hidden="true">
@@ -77,21 +83,14 @@ const socials = [
   flex-wrap: wrap;
 }
 
-.social-pill {
-  padding: 10px 22px;
-  border-radius: 999px;
-  border: 1px solid var(--border-subtle);
-  font-size: 0.86rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  background: var(--bg-surface);
-  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+.social-icon {
+  display: inline-flex;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.social-pill:hover {
-  transform: translateY(-3px);
-  border-color: var(--blue-accent);
-  color: var(--blue-accent-soft);
+.social-icon:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.1);
 }
 
 .about-photo-wrap {
@@ -188,4 +187,23 @@ const socials = [
     height: 270px;
   }
 }
+
+.social-icon {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.social-img {
+  width: 50px;
+  height: 50px;
+  display: block;
+  object-fit: contain;
+}
+
 </style>
