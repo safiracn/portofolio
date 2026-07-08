@@ -79,7 +79,7 @@ const projects = [
     tools: ['Website'],
     image: '/images/pkti.jpeg',
    links: [
-      { label: 'Web', href: 'https://v0-dashboard-deployment-chi.vercel.app/' }
+      { label: 'View', href: 'https://v0-dashboard-deployment-chi.vercel.app/' }
     ]
   },
   {
@@ -100,6 +100,17 @@ const projects = [
     image: '/images/basdat.png',
     links: [
       { label: 'GitHub', href: 'https://github.com/safiracn/Project-Basis-Data-Kel-2-II-B.git' }
+    ]
+  },
+    {
+    title: 'Personal Portfolio Website',
+    description:
+      'A personal portfolio website built to showcase my journey as an Information System student with a focus on data analytics and fullstack development. Designed with a clean navy, gold, and blue theme, the site presents my profile, education, skills, and a collection of more than 10 projects across web development, mobile development, UI/UX design, and statistical analysis, along with my involvement in campus organizations and committees. Built using Vue 3 and Vite with a component based structure and centralized data management, this project reflects not only my technical execution but also my attention to detail in translating personal branding into a functional, well structured digital presence.',
+    tools: ['Vue', 'Vite'],
+    image: '/images/portofolio.jpeg',
+    links: [
+      { label: 'View', href: 'https://portofoliosafira.vercel.app/' },
+      { label: 'GitHub', href: 'https://github.com/safiracn/portofolio.git' }
     ]
   },
   {

@@ -133,3 +133,22 @@ img {
     padding: calc(var(--nav-height) + 40px) 6vw 72px;
   }
 }
+
+@media (max-width: 480px) {
+  :root {
+    --nav-height: 64px;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 28px;
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+  }
+
+  .section {
+    padding: calc(var(--nav-height) + 24px) 5vw 56px;
+  }
+}

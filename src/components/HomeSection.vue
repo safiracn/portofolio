@@ -36,7 +36,7 @@ function scrollTo(id) {
 
       <div class="hero-stats">
         <a class="stat-card" href="#projects" @click.prevent="scrollTo('projects')">
-          <span class="stat-number">10</span>
+          <span class="stat-number">10+</span>
           <span class="stat-label">Projects Built</span>
         </a>
         <a class="stat-card" href="#organization" @click.prevent="scrollTo('organization')">

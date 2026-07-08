@@ -321,5 +321,19 @@ function handleLogoError(i) {
   .card-content {
     max-width: 100%;
   }
+
+  .school {
+    font-size: 1.02rem;
+  }
+  .degree {
+    font-size: 0.86rem;
+    margin-bottom: 10px;
+  }
+  .card-meta {
+    gap: 8px;
+  }
+  .timeline-item {
+    margin-bottom: 24px;
+  }
 }
 </style>
