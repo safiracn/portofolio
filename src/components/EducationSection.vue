@@ -168,7 +168,6 @@ function handleLogoError(i) {
   transform: scale(1.08);
 }
 
-/* --- Panggung logo besar di kanan --- */
 .logo-stage {
   position: absolute;
   top: 0;
@@ -226,7 +225,6 @@ function handleLogoError(i) {
   opacity: 0.9;
 }
 
-/* Fade halus di tepi kanan supaya logo menyatu rapi dengan tepi kartu */
 .timeline-card::after {
   content: '';
   position: absolute;
@@ -314,14 +312,35 @@ function handleLogoError(i) {
   .timeline-card {
     padding: 20px 22px;
     min-height: unset;
-  }
-  .logo-stage {
-    display: none;
-  }
-  .card-content {
-    max-width: 100%;
+    flex-direction: column;
+    align-items: center;  
+    gap: 14px;
   }
 
+  .logo-stage {
+    position: static;
+    width: auto;
+    height: auto;
+  }
+  .logo-glow {
+    display: none;
+  }
+  .logo-frame {
+    width: 52px;
+    height: 52px;
+  }
+  .logo-fallback {
+    font-size: 1.4rem;
+  }
+
+  .timeline-card::after {
+    display: none;
+  }
+
+  .card-content {
+    max-width: 100%;
+    width: 100%;   
+  }
   .school {
     font-size: 1.02rem;
   }
