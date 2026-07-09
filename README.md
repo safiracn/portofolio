@@ -72,3 +72,34 @@ The optimized output will be generated in the `dist/` folder.
 This project is deployed on [Vercel](https://vercel.com/). Vercel automatically detects the Vite configuration, using `npm run build` as the build command and `dist` as the output directory. Any push to the main branch triggers a new deployment.
 
 ## Project Structure
+src/
+components/
+NavBar.vue
+AppIcon.vue                    -> reusable icon component (UI icons + brand logos)
+HomeSection.vue
+AboutSection.vue
+EducationSection.vue
+SkillsSection.vue
+ProjectsSection.vue
+PublicationBlogSection.vue
+OrganizationCommitteeSection.vue
+ContactSection.vue
+App.vue                          -> assembles all sections, handles scroll-spy navigation
+main.js
+style.css                        -> global design tokens and base styles
+public/
+cv/                               -> resume/CV file
+images/                           -> profile photo, project images, organization photos
+
+## Contact
+
+Feel free to reach out through the contact form on the website, or connect with me directly:
+
+- **Instagram:** [@safiracn_](https://www.instagram.com/safiracn_)
+- **LinkedIn:** [safiracn](https://www.linkedin.com/in/safiracn)
+- **GitHub:** [@safiracn](https://github.com/safiracn)
+- **Email:** firafizua@gmail.com
+
+---
+
+© 2026 Safira Choirun Nisa'
