@@ -146,6 +146,7 @@ async function sendMessage() {
           </div>
 
           <button class="btn-send" type="submit" :disabled="status === 'sending'">
+            <AppIcon v-if="status !== 'sending'" name="send" :size="17" />
             {{ status === 'sending' ? 'Sending...' : 'Send Message' }}
           </button>
 
@@ -333,6 +334,9 @@ async function sendMessage() {
 }
 
 .btn-send {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   align-self: flex-start;
   padding: 13px 32px;
   border-radius: 999px;
