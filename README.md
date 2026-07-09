@@ -1,90 +1,74 @@
-# Safira Choirun Nisa' — Portfolio
+# Safira Choirun Nisa' — Personal Portfolio
 
-Website portofolio 1 halaman (single-page) dibuat dengan **Vue 3 + Vite**, siap di-deploy ke **Vercel**. Tidak menggunakan database — semua konten ditulis langsung di dalam komponen Vue.
+A single-page personal portfolio website showcasing my background as an Information Systems student, with a focus on data analytics and fullstack development.
 
-Progress saat ini: **Home, About, Education, Skills** sudah selesai. Section berikutnya (Projects, Publication & Blog, Organization & Committee, Contact) akan menyusul.
+**Live site:** [portofoliosafira.vercel.app](https://portofoliosafira.vercel.app)
 
-## Menjalankan secara lokal
+![Vue](https://img.shields.io/badge/Vue-3-42b883?logo=vue.js&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)
+![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?logo=vercel&logoColor=white)
+
+---
+
+## About
+
+This portfolio is built as a single, continuously scrollable page. The navigation bar automatically highlights the section currently in view, giving visitors a clear sense of where they are without needing to click through multiple pages. It covers my education, technical and soft skills, projects, publications, organizational experience, and a working contact form.
+
+## Sections
+
+| Section | Description |
+|---|---|
+| **Home** | Introduction, quick links to download my CV and jump to the About section |
+| **About** | A short summary of who I am, with links to my social profiles |
+| **Education** | Academic background presented as a timeline |
+| **Skills** | Soft skills, hard skills, and languages |
+| **Projects** | A collection of projects with descriptions, tools used, and links to source/design files |
+| **Publication & Blog** | Published research and articles |
+| **Organization & Committee** | Organizational roles and event committee experience |
+| **Contact** | Contact details, an embedded map, and a working message form |
+
+## Tech Stack
+
+- **[Vue 3](https://vuejs.org/)** — Composition API with `<script setup>`
+- **[Vite](https://vitejs.dev/)** — build tool and dev server
+- **[EmailJS](https://www.emailjs.com/)** — sends messages from the contact form directly to my email, with no backend required
+- **[Devicon](https://devicon.dev/) & [Iconify (Logos collection)](https://icon-sets.iconify.design/logos/)** — official brand logos used throughout the site
+- **[Lucide](https://lucide.dev/)** — outline icons for UI elements
+- Plain CSS with custom properties (design tokens) for a consistent dark, blue-toned theme
+- No database — all content is defined directly within the Vue components
+
+## Getting Started
+
+### Prerequisites
+- [Node.js](https://nodejs.org/) 18 or later
+- npm
+
+### Installation
 
 ```bash
+git clone https://github.com/safiracn/<repo-name>.git
+cd <repo-name>
 npm install
+```
+
+### Run locally
+
+```bash
 npm run dev
 ```
 
-Lalu buka `http://localhost:5173`.
+The site will be available at `http://localhost:5173`.
 
-## Build untuk production
+### Build for production
 
 ```bash
 npm run build
 ```
 
-Hasil build ada di folder `dist/`.
+The optimized output will be generated in the `dist/` folder.
 
-## Deploy ke Vercel
+## Deployment
 
-1. Push project ini ke repository GitHub.
-2. Buka [vercel.com](https://vercel.com) → **New Project** → import repo tersebut.
-3. Vercel akan otomatis mendeteksi framework **Vite** (build command `npm run build`, output folder `dist`) — biarkan default, lalu klik **Deploy**.
+This project is deployed on [Vercel](https://vercel.com/). Vercel automatically detects the Vite configuration, using `npm run build` as the build command and `dist` as the output directory. Any push to the main branch triggers a new deployment.
 
-Atau lewat CLI:
-
-```bash
-npm install -g vercel
-vercel
-```
-
-## Mengganti konten
-
-### 1. Foto profil (section About)
-File: `src/components/AboutSection.vue`
-
-Cari komentar `PHOTO PLACEHOLDER`, lalu ganti `<div class="photo-placeholder">...</div>` dengan tag `<img>`:
-
-```html
-<img src="/images/safira-photo.png" alt="Safira Choirun Nisa'" class="photo-img" />
-```
-
-Taruh file fotomu di `public/images/` (disarankan PNG dengan background transparan supaya menyatu dengan elemen dekorasi di belakangnya). Kamu mungkin perlu menambah sedikit CSS `.photo-img { width: 100%; height: 100%; object-fit: contain; }` di bagian `<style scoped>`.
-
-### 2. File CV (tombol "Download CV" di Home)
-File: `src/components/HomeSection.vue`
-
-Taruh file CV (PDF) di `public/cv/`, lalu sesuaikan `href` pada tombol Download CV, contoh:
-
-```html
-<a class="btn btn-primary" href="/cv/Safira-Choirun-Nisa-CV.pdf" download>
-```
-
-### 3. Menambah section baru (Projects, Publication & Blog, dst.)
-File: `src/App.vue`
-
-1. Tambahkan entri baru ke array `navSections`, misalnya `{ id: 'projects', label: 'Projects' }`.
-2. Buat komponen baru di `src/components/`, misalnya `ProjectsSection.vue`, dengan root elemen `<section id="projects" class="section">`.
-3. Import dan pasang komponennya di dalam `<main>` pada `App.vue`, sesuai urutan pada `navSections`.
-
-Nav bar akan otomatis mendeteksi section yang sedang aktif saat di-scroll (via `IntersectionObserver`), tidak perlu diubah manual.
-
-## Struktur folder
-
-```
-src/
-  components/
-    NavBar.vue
-    HomeSection.vue
-    AboutSection.vue
-    EducationSection.vue
-    SkillsSection.vue
-  App.vue        -> merangkai semua section + logic scrollspy
-  main.js
-  style.css      -> design tokens (warna, spacing) & style global
-public/
-  cv/            -> taruh file CV di sini
-  images/        -> taruh foto profil di sini
-```
-
-## Desain
-
-- Palet warna: biru dominan gelap (`--bg-deep`, `--bg-surface`, `--blue-accent`, dst. — lihat `src/style.css`).
-- Font: Poppins (dimuat dari Google Fonts di `index.html`).
-- Semua elemen berbasis teks (tanpa ikon/logo) sesuai permintaan — lebih ringan dan sederhana.
+## Project Structure
